@@ -6,6 +6,10 @@ const article = new mongoose.Schema({
     type: String,
     required: true,
   },
+  title: {
+    type: String,
+    required: true,
+  },
   text: {
     type: String,
     required: true,
@@ -27,13 +31,14 @@ const article = new mongoose.Schema({
       },
     },
   },
-  image: {
+  imageUrl: {
     type: String,
     required: true,
     validator: {
       validator(value) {
         return validator.isUrl(value);
       },
+      message: "Link is not a valid URL",
     },
   },
   owner: {
