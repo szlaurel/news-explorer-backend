@@ -26,7 +26,7 @@ const user = new mongoose.Schema({
   },
 });
 
-user.static.findUserByCredentials = function findUserByCredentials(
+user.statics.findUserByCredentials = function findUserByCredentials(
   email,
   password,
 ) {
