@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const rateLimit = require("express-rate-limit");
 
 const { PORT = 3000 } = process.env;
 const mongoose = require("mongoose");
@@ -9,6 +10,8 @@ const { errors } = require("celebrate");
 const { requestLogger, errorLogger } = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 const app = express();
+
+const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
 
 mongoose.connect(
   "mongodb://localhost:27017/ne_db",
@@ -32,6 +35,7 @@ app.get("/crash-test", () => {
   }, 0);
 });
 
+app.use(limiter);
 app.use(express.json());
 app.use(cors());
 app.use(requestLogger);
