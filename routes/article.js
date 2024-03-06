@@ -16,13 +16,13 @@ const {
 /*                                   Create                                   */
 /* -------------------------------------------------------------------------- */
 
-router.post("/articles", createArticleValidation, auth, createArticle);
+router.post("/", createArticleValidation, auth, createArticle);
 
 /* -------------------------------------------------------------------------- */
 /*                                    Read                                    */
 /* -------------------------------------------------------------------------- */
 
-router.get("/articles", getArticles);
+router.get("/", getArticles);
 
 /* -------------------------------------------------------------------------- */
 /*                                   Update                                   */
@@ -36,6 +36,6 @@ router.get("/articles", getArticles);
 // are supposed to be so if an error occurs regarding the article id then it
 // might have something to do with the router.delete
 
-router.delete("/articles/articleId", validateArticleIds, auth, deleteArticle);
+router.delete("/articleId", validateArticleIds, auth, deleteArticle);
 
 module.exports = router;

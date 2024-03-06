@@ -11,7 +11,7 @@ const { auth } = require("../middleware/auth");
 /*                                    Read                                    */
 /* -------------------------------------------------------------------------- */
 
-router.get("/users/me", auth, getCurrentUser);
+router.get("/me", auth, getCurrentUser);
 
 /* -------------------------------------------------------------------------- */
 /*                                   Update                                   */
